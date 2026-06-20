@@ -82,6 +82,42 @@ struct ContentView: View {
                         .cornerRadius(10)
                 }
                 //Spacer()
+                // users
+                Text("User")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(.gray)
+                    .cornerRadius(10)
+                // posts -> comments
+                Text("Posts")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.accentColor)
+                    .cornerRadius(10)
+                // todos
+                Text("Todos")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.brown)
+                    .cornerRadius(10)
+                
+                // photos
+                Text("Photos")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.orange)
+                    .cornerRadius(10)
+                
+                
+                
             }
             .padding(.horizontal, 32)
             .navigationBarHidden(true)
