@@ -27,6 +27,28 @@ struct Address: Decodable {
     var suite: String
     var city: String
     var zipcode: String
+    let geo: GeoLocation // Catch the nested coordinates
+    
+    
+    var fullAddressString: String {
+            return "\(street), \(suite), \(city), \(zipcode)"
+        }
+    
+    
+}
+
+struct GeoLocation: Codable {
+    let lat: String
+    let lng: String
+    
+    // Convert the string properties to double numbers for MapKit compatibility
+    var latitudeCoordinate: Double {
+        return Double(lat) ?? 0.0
+    }
+    
+    var longitudeCoordinate: Double {
+        return Double(lng) ?? 0.0
+    }
 }
 // user-company
 struct Company: Decodable {

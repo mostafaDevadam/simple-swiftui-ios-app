@@ -24,12 +24,12 @@ struct UsersView: View {
                         Text(user.email)
                             .font(.body)
                             .foregroundColor(.secondary)
-                        Text(user.address.city)
+                        /*Text(user.address.city)
                             .font(.body)
                             .foregroundColor(.secondary)
                         Text(user.company.name)
                             .font(.body)
-                            .foregroundColor(.secondary)
+                            .foregroundColor(.secondary)*/
                     }
                     .padding()
                     .frame(maxWidth: .infinity, alignment: .leading)
