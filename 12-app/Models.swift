@@ -45,7 +45,13 @@ struct Post: Decodable, Identifiable {
 }
 
 // comment
-struct Comment {}
+struct Comment: Decodable, Identifiable {
+    var id: Int
+    var postId: Int
+    var name: String
+    var email: String
+    var body: String
+}
 
 // todo
 struct Todo {}
