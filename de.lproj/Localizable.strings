@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  12-app
+
+  Created by mostafa on 20/06/2026.
+  
+*/
+"settings" = "Einstellungen";
+"users" = "Benutzer";
+"storage" = "Speicher";
+"posts" = "Beiträge";
+"todos" = "Aufgaben";
+"photos" = "Fotos";
+"welcome_message" = "Willkommen in der Früchte-App!";

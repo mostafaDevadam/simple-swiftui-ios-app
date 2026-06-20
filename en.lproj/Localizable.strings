@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  12-app
+
+  Created by mostafa on 20/06/2026.
+  
+*/
+"settings" = "Settings";
+"users" = "Users";
+"storage" = "Storage";
+"posts" = "Posts";
+"todos" = "Todos";
+"photos" = "Photos";
+"welcome_message" = "Welcome to the Fruit App!";

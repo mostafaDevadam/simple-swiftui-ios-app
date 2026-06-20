@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  12-app
+
+  Created by mostafa on 20/06/2026.
+  
+*/
+"settings" = "الاعدادات";
+"users" = "المستخدمين";
+"storage" = "التخزين";
+"posts" = "المنشورات";
+"todos" = "المهام";
+"photos" = "الصور";
+"welcome_message" = "مرحبا بك تطبيق الفواكه";
