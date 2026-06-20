@@ -83,21 +83,25 @@ struct ContentView: View {
                 }
                 //Spacer()
                 // users
-                Text("User")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(.gray)
-                    .cornerRadius(10)
+                NavigationLink(destination: UsersView()){
+                    Text("Users")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(.gray)
+                        .cornerRadius(10)
+                }
                 // posts -> comments
-                Text("Posts")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.accentColor)
-                    .cornerRadius(10)
+                NavigationLink(destination: PostsView()){
+                    Text("Posts")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.accentColor)
+                        .cornerRadius(10)
+                }
                 // todos
                 Text("Todos")
                     .font(.headline)
