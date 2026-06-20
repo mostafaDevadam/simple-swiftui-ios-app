@@ -61,6 +61,16 @@ struct ContentView: View {
             VStack(spacing: 16) {
                 //Spacer()
                 
+                NavigationLink(destination: SettingsView()){
+                    Text("settings")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(.gray)
+                        .cornerRadius(10)
+                }
+                
                 NavigationLink(destination: LocalView()){
                     Text("Local")
                         .font(.headline)
@@ -73,7 +83,7 @@ struct ContentView: View {
                         
                 }
                 NavigationLink(destination: StorageView()) {
-                    Text("Storage")
+                    Text("storage")
                         .font(.headline)
                         .foregroundColor(.white)
                         .padding()
@@ -84,7 +94,7 @@ struct ContentView: View {
                 //Spacer()
                 // users
                 NavigationLink(destination: UsersView()){
-                    Text("Users")
+                    Text("users")
                         .font(.headline)
                         .foregroundColor(.white)
                         .padding()
@@ -94,7 +104,7 @@ struct ContentView: View {
                 }
                 // posts -> comments
                 NavigationLink(destination: PostsView()){
-                    Text("Posts")
+                    Text("posts")
                         .font(.headline)
                         .foregroundColor(.white)
                         .padding()
@@ -103,7 +113,7 @@ struct ContentView: View {
                         .cornerRadius(10)
                 }
                 // todos
-                Text("Todos")
+                Text("todos")
                     .font(.headline)
                     .foregroundColor(.white)
                     .padding()
@@ -112,7 +122,7 @@ struct ContentView: View {
                     .cornerRadius(10)
                 
                 // photos
-                Text("Photos")
+                Text("photos")
                     .font(.headline)
                     .foregroundColor(.white)
                     .padding()
