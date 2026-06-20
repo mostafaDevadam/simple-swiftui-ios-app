@@ -72,7 +72,7 @@ struct ContentView: View {
                 }
                 
                 NavigationLink(destination: LocalView()){
-                    Text("Local")
+                    Text("local")
                         .font(.headline)
                         .foregroundColor(.white)
                         .padding()

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @EnvironmentObject var languageManager: LanguageManager
+    @Environment(\.presentationMode) var presentationMode
     
     
     var body: some View {
@@ -73,6 +74,21 @@ struct SettingsView: View {
             
                 }
                 .padding()
+                .navigationBarBackButtonHidden(true)
+                .navigationBarItems(leading:
+                                        Button(action: {
+                    presentationMode.wrappedValue.dismiss()
+                }){
+                    HStack{
+                        Image(systemName: "chevron.left")
+                            .font(.body)
+                            .bold()
+                        Text("back")
+                            .font(.body)
+                            .bold()
+                    }
+                }
+                )
     }
 }
 

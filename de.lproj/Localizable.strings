@@ -6,9 +6,12 @@
   
 */
 "settings" = "Einstellungen";
+"local" = "Lokal";
 "users" = "Benutzer";
 "storage" = "Speicher";
 "posts" = "Beiträge";
 "todos" = "Aufgaben";
 "photos" = "Fotos";
+"back" = "Zurück";
+
 "welcome_message" = "Willkommen in der Früchte-App!";

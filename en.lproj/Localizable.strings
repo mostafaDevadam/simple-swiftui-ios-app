@@ -6,9 +6,13 @@
   
 */
 "settings" = "Settings";
+"local" = "Local";
 "users" = "Users";
 "storage" = "Storage";
 "posts" = "Posts";
 "todos" = "Todos";
 "photos" = "Photos";
+"back" = "Back";
+
+
 "welcome_message" = "Welcome to the Fruit App!";
