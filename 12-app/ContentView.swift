@@ -21,21 +21,70 @@ struct Item2: Identifiable, Codable {
     let description: String
 }
 
+
+class StorageManager: ObservableObject {
+    @Published var items: [Item2] = [] {
+        didSet {
+            saveItems() // Automatically saves to disk whenever items changes!
+        }
+    }
+    
+    init() {
+        loadItems()
+    }
+    
+    func loadItems() {
+        if let data = UserDefaults.standard.data(forKey: "saved_items"),
+           let decoded = try? JSONDecoder().decode([Item2].self, from: data) {
+            self.items = decoded
+        } else {
+            // Default fallback items on first launch
+            self.items = [
+                Item2(name: "Apfel", description: "Knackig..."),
+                Item2(name: "Banane", description: "Süß...")
+            ]
+        }
+    }
+    
+    private func saveItems() {
+        if let encoded = try? JSONEncoder().encode(items) {
+            UserDefaults.standard.set(encoded, forKey: "saved_items")
+        }
+    }
+}
+
 struct ContentView: View {
     
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 20) {
+            VStack(spacing: 16) {
+                //Spacer()
                 
                 NavigationLink(destination: LocalView()){
                     Text("Local")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(.blue)
+                        .cornerRadius(10)
+                        
+                        
                 }
                 NavigationLink(destination: StorageView()) {
                     Text("Storage")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(.green)
+                        .cornerRadius(10)
                 }
-                //.padding()
+                //Spacer()
             }
+            .padding(.horizontal, 32)
+            .navigationBarHidden(true)
             
         }
         
@@ -54,6 +103,8 @@ struct StorageView: View {
     @State private var showingAddView = false
     
     @State private var items: [Item2] = StorageView.loadItems()
+    
+    @StateObject private var manager = StorageManager()
     
    
     static func loadItems() -> [Item2] {
@@ -87,7 +138,7 @@ struct StorageView: View {
         NavigationView {
             VStack {
                 List {
-                    ForEach(items) { item in
+                    ForEach(manager.items) { item in
                         NavigationLink(destination: Details(item: item)){
                             Text(item.name)
                                 //.font(.headline)
@@ -95,10 +146,11 @@ struct StorageView: View {
                         }
                    }
                     // delete
-                    .onDelete(perform: deleteItems)
-                    /*.onDelete { indexSet in
-                                        items.remove(atOffsets: indexSet)
-                                    }*/
+                    //.onDelete(perform: deleteItems)
+                    .onDelete { indexSet in
+                                        //items.remove(atOffsets: indexSet)
+                        manager.items.remove(atOffsets: indexSet)
+                                    }
             }
                 .navigationTitle("Meine Storage Liste")
                 // button add-item
@@ -114,13 +166,15 @@ struct StorageView: View {
                 
                 // display as sheet
                 .sheet(isPresented: $showingAddView){
-                    AddStorageItemView(items: $items,
+                    /*AddStorageItemView(items: $items,
                                        onSave: saveItems
-                    )
+                    )*/
+                    AddStorageItemView(manager: manager)
                 }
                 //
                 .onAppear{
-                    self.items = StorageView.loadItems()
+                    //self.items = StorageView.loadItems()
+                    manager.loadItems()
                 }
             }
             //.padding()
@@ -135,9 +189,10 @@ struct StorageView: View {
 }
 struct AddStorageItemView: View {
     @Environment(\.presentationMode) var presentationMode
+    @ObservedObject var manager: StorageManager
     
-    @Binding var items: [Item2]
-    var onSave: () -> Void
+    //@Binding var items: [Item2]
+    //var onSave: () -> Void
     
     @State private var name = ""
     @State private var description = ""
@@ -156,13 +211,14 @@ struct AddStorageItemView: View {
                 presentationMode.wrappedValue.dismiss()
             }
             , trailing:
-                                    Button("Save") {
-                let newItem = Item2(name: name, description: description)
-                items.append(newItem)
-                onSave()
-                
-                // close
-                presentationMode.wrappedValue.dismiss()
+                Button("Save") {
+                    let newItem = Item2(name: name, description: description)
+                    //items.append(newItem)
+                    manager.items.append(newItem)
+                    //onSave()
+                    
+                    // close
+                    presentationMode.wrappedValue.dismiss()
             }
                 .disabled(name.isEmpty)
             )
